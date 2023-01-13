@@ -1,31 +1,49 @@
 import PropTypes from 'prop-types';
-import css from './Profile.module.css';
+import {
+  StatQuantity,
+  StatLabel,
+  ProfileStats,
+  ProfileLocation,
+  ProfileTag,
+  ProfileName,
+  Description,
+  ProfileAvatar,
+  ProfileCard,
+} from './Profile.styled';
 
-export const Profile = ({ username, tag, location, avatar, stats }) => {
+export const Profile = ({
+  username,
+  tag,
+  location,
+  avatar,
+  followers,
+  views,
+  likes,
+}) => {
   return (
-    <div className={css.profile}>
-      <div className={css.description}>
-        <img src={avatar} alt="User avatar" className={css.avatar} />
-        <p className={css.name}>{username}</p>
-        <p className={css.tag}>@{tag}</p>
-        <p className={css.location}>{location}</p>
-      </div>
+    <ProfileCard>
+      <Description>
+        <ProfileAvatar src={avatar} alt="User avatar"></ProfileAvatar>
+        <ProfileName>{username}</ProfileName>
+        <ProfileTag>@{tag}</ProfileTag>
+        <ProfileLocation>{location}</ProfileLocation>
+      </Description>
 
-      <ul className={css.stats}>
+      <ProfileStats>
         <li>
-          <span className={css.label}>Followers</span>
-          <span className={css.quantity}>{stats.followers}</span>
+          <StatLabel>Followers</StatLabel>
+          <StatQuantity>{followers}</StatQuantity>
         </li>
         <li>
-          <span class={css.label}>Views</span>
-          <span class={css.quantity}>{stats.views}</span>
+          <StatLabel>Views</StatLabel>
+          <StatQuantity>{views}</StatQuantity>
         </li>
         <li>
-          <span className={css.label}>Likes</span>
-          <span className={css.quantity}>{stats.likes}</span>
+          <StatLabel>Likes</StatLabel>
+          <StatQuantity>{likes}</StatQuantity>
         </li>
-      </ul>
-    </div>
+      </ProfileStats>
+    </ProfileCard>
   );
 };
 
@@ -34,5 +52,7 @@ Profile.propTypes = {
   tag: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
   avatar: PropTypes.string.isRequired,
-  stats: PropTypes.number.isRequired,
+  followers: PropTypes.number.isRequired,
+  views: PropTypes.number.isRequired,
+  likes: PropTypes.number.isRequired,
 };

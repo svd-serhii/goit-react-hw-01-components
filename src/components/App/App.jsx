@@ -3,11 +3,11 @@ import { Statistics } from '../Statistics/Statistics';
 import { FriendList } from 'components/Friends/FriendList/FriendList';
 import { TransactionHistory } from 'components/TransactionHistory/TransactionHistory';
 import { user, data, friends, transactions } from 'data';
-import css from './App.module.css';
+import { Container } from './App.styled';
 
 export const App = () => {
   return (
-    <div className={css.container}>
+    <Container>
       <Profile
         username={user.username}
         tag={user.tag}
@@ -21,6 +21,6 @@ export const App = () => {
       <Statistics title="Upload stats" stats={data} />
       <FriendList friends={friends} />
       <TransactionHistory items={transactions} />
-    </div>
+    </Container>
   );
 };
